@@ -33,6 +33,12 @@ describe RTurk::Qualifications do
     @qualification.to_params.should eql({"QualificationTypeId" => '00000000000000000071',"Comparator" => 'EqualTo',
                                          "LocaleValue.Country" => 'PH', "RequiredToPreview" => "true"})
   end
+
+  it "should build a qualification for existence qualification" do
+    @qualification = RTurk::Qualification.new('00000000000000000071', :exists)
+    @qualification.to_params.should eql({"QualificationTypeId" => '00000000000000000071',"Comparator" => 'Exists',
+                                         "RequiredToPreview" => "true"})
+  end
   
   context 'passing in symbols representing a TypeID' do
     

@@ -39,7 +39,9 @@ module RTurk
       elsif opts == true || opts == false
          qualifier[:IntegerValue] = opts == true ? 1 : 0
          qualifier[:Comparator] = COMPARATORS[:eql]
-       end
+      elsif opts == :exists
+        qualifier[:Comparator] = COMPARATORS[:exists]
+      end
       qualifier
     end
 
